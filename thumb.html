@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="hand" id="thumb">
+        <div class="finger"></div>
+        <div class="finger"></div>
+        <div class="finger"></div>
+        <div class="finger"></div>
+        <div class="finger thumb"></div>
+        <div class="arm"></div>
+    </div>
+    <style>
+        #thumb {
+            width: 100px;
+            height: 100px;
+            background: blueviolet;
+        }
+    </style>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.bootcss.com/systemjs/0.21.3/system.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+    <!-- <script src="scripts/thumb-es.js" type="text/javascript"></script> -->
+    <script type="text/javascript">
+        SystemJS.config({
+            baseURL: '/Desktop/praisethumb/scripts'
+        });
+        SystemJS.import('index-es.js').then(function(m) {
+            console.log(m);
+            $.extend({
+                thumb: m.default.Thumb
+            })
+            callBack();
+        });
+        function callBack() {
+            q = new $.thumb(0, $('#thumb'));
+            q.clickAction();
+        };
+    </script>
+</body>
+
+</html>
